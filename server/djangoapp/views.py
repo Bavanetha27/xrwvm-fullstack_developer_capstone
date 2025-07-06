@@ -7,6 +7,9 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import logout
 from django.contrib import messages
 from datetime import datetime
+from .models import CarMake, CarModel
+from .populate import initiate
+
 
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
@@ -21,6 +24,17 @@ logger = logging.getLogger(__name__)
 
 
 # Create your views here.
+
+def get_cars(request):
+    if CarModel.objects.count() == 0:
+        initiate()
+
+    car_models = CarModel.objects.select_related('car_make')
+    cars = [
+        {"CarModel": model.name, "CarMake": model.car_make.name}
+        for model in car_models
+    ]
+    return JsonResponse({"CarModels": cars})
 
 # Create a `login_request` view to handle sign in request
 @csrf_exempt
