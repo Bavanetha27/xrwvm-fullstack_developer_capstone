@@ -1,6 +1,5 @@
 from django.db import models
 
-# Car Make Model
 class CarMake(models.Model):
     name = models.CharField(null=False, max_length=100)
     description = models.TextField()
@@ -8,8 +7,6 @@ class CarMake(models.Model):
     def __str__(self):
         return f"{self.name} - {self.description[:50]}..."
 
-
-# Car Model
 class CarModel(models.Model):
     SEDAN = 'Sedan'
     SUV = 'SUV'

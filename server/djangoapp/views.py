@@ -10,21 +10,13 @@ from datetime import datetime
 from .models import CarMake, CarModel
 from .populate import initiate
 from .restapis import get_request, analyze_review_sentiments, post_review
-
-
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
 import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
-# from .populate import initiate
 
-
-# Get an instance of a logger
 logger = logging.getLogger(__name__)
-
-
-# Create your views here.
 
 def get_cars(request):
     if CarModel.objects.count() == 0:
@@ -75,26 +67,20 @@ def registration(request):
     username_exist = False
     email_exist = False
     try:
-        # Check if user already exists
         User.objects.get(username=username)
         username_exist = True
     except:
-        # If not, simply log this is a new user
         logger.debug("{} is new user".format(username))
 
-    # If it is a new user
     if not username_exist:
-        # Create user in auth_user table
         user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name,password=password, email=email)
-        # Login the user and redirect to list page
         login(request, user)
-        data = {"userName":username,"status":"Authenticated"}
+        data = {"userName":username, "status":"Authenticated"}
         return JsonResponse(data)
     else :
-        data = {"userName":username,"error":"Already Registered"}
+        data = {"userName":username, "error":"Already Registered"}
         return JsonResponse(data)
 
-#Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
 def get_dealerships(request, state="All"):
     if(state == "All"):
         endpoint = "/fetchDealers"
@@ -120,11 +106,10 @@ def get_dealer_reviews(request, dealer_id):
             response = analyze_review_sentiments(review_detail['review'])
             print(response)
             review_detail['sentiment'] = response['sentiment']
-        return JsonResponse({"status":200,"reviews":reviews})
+        return JsonResponse({"status":200, "reviews":reviews})
     else:
-        return JsonResponse({"status":400,"message":"Bad Request"})
+        return JsonResponse({"status":400, "message":"Bad Request"})
 
-# Create a `add_review` view to submit a review
 def add_review(request):
     if(request.user.is_anonymous == False):
         data = json.loads(request.body)
@@ -132,6 +117,6 @@ def add_review(request):
             response = post_review(data)
             return JsonResponse({"status":200})
         except:
-            return JsonResponse({"status":401,"message":"Error in posting review"})
+            return JsonResponse({"status":401, "message":"Error in posting review"})
     else:
-        return JsonResponse({"status":403,"message":"Unauthorized"})
+        return JsonResponse({"status":403, "message":"Unauthorized"})
