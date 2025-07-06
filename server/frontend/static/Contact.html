@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Best Cars Dealership</title>
+  <link rel="stylesheet" href="/static/bootstrap.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      color: #343a40;
+    }
+    nav.navbar {
+      background-color: #20c997; /* match your site's navbar color */
+      height: 70px;
+    }
+    nav h2 {
+      color: white;
+      font-weight: 700;
+      margin-right: 2rem;
+    }
+    nav .nav-link {
+      font-size: 1.1rem;
+      color: white !important;
+      font-weight: 500;
+    }
+    nav .nav-link.active {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .contact-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      background: white;
+      padding: 2.5rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-container h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      color: #20c997;
+    }
+
+    .contact-container p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-box {
+      flex: 1 1 280px;
+      background: #e9f7f5;
+      border-left: 5px solid #20c997;
+      padding: 1.5rem 1.8rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .info-box h3 {
+      margin-bottom: 1rem;
+      color: #17a2b8;
+    }
+
+    .info-box p {
+      margin: 0.4rem 0;
+      font-size: 1rem;
+      color: #495057;
+    }
+
+    @media (max-width: 600px) {
+      .contact-info {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <h2>Dealerships</h2>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="contact-container">
+    <h1>Contact Us</h1>
+    <p>
+      We’re here to help! Whether you have questions about our inventory, financing options, or want to schedule a test drive, please reach out to us.
+      Our friendly and knowledgeable team is ready to assist you.
+    </p>
+
+    <div class="contact-info">
+      <div class="info-box">
+        <h3>Address</h3>
+        <p>1234 Auto Plaza Drive</p>
+        <p>Springfield, IL 62704</p>
+        <p>United States</p>
+      </div>
+
+      <div class="info-box">
+        <h3>Phone</h3>
+        <p>Sales: (555) 123-4567</p>
+        <p>Support: (555) 987-6543</p>
+        <p>Fax: (555) 555-1212</p>
+      </div>
+
+      <div class="info-box">
+        <h3>Email</h3>
+        <p>info@bestcarsdealership.com</p>
+        <p>support@bestcarsdealership.com</p>
+      </div>
+    </div>
+
+  </section>
+
+  <script src="/static/bootstrap.min.js"></script>
+</body>
+</html>
