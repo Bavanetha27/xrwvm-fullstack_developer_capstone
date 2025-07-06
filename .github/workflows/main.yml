@@ -28,7 +28,7 @@ jobs:
         run: |
           # Recursively find all Python files and run flake8 on them
           find . -name "*.py" -exec flake8 {} +
-          echo "Linted all the Python files successfully"
+          echo "Linted all the python files successfully"
 
   lint_js:
     name: Lint JavaScript Files
@@ -47,6 +47,6 @@ jobs:
       
       - name: Run Linter
         run: |
-          # Run JSHint using .jshintrc config
-          find ./server/database -name "*.js" -exec jshint {} +
+          # Run JSHint with ES8 support on all .js files in server/database
+          find ./server/database -name "*.js" -exec jshint --esversion=8 {} +
           echo "Linted all the JS files successfully"
