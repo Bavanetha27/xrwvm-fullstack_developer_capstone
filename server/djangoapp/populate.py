@@ -1,5 +1,6 @@
 from .models import CarMake, CarModel
 
+
 def initiate():
     car_make_data = [
         {"name": "NISSAN", "description": "Great cars. Japanese technology"},
@@ -12,7 +13,10 @@ def initiate():
     car_make_instances = []
     for data in car_make_data:
         car_make_instances.append(
-            CarMake.objects.create(name=data['name'], description=data['description'])
+            CarMake.objects.create(
+                name=data['name'],
+                description=data['description']
+            )
         )
 
     car_model_data = [
@@ -39,5 +43,5 @@ def initiate():
             car_make=data['car_make'],
             car_type=data['type'],
             year=f"{data['year']}-01-01",
-            dealer_id=1  # Default/placeholder
+            dealer_id=1,  # Default/placeholder
         )

@@ -1,11 +1,13 @@
 from django.db import models
 
+
 class CarMake(models.Model):
     name = models.CharField(null=False, max_length=100)
     description = models.TextField()
 
     def __str__(self):
         return f"{self.name} - {self.description[:50]}..."
+
 
 class CarModel(models.Model):
     SEDAN = 'Sedan'
@@ -19,7 +21,7 @@ class CarModel(models.Model):
         (SUV, 'SUV'),
         (WAGON, 'Wagon'),
         (COUPE, 'Coupe'),
-        (TRUCK, 'Truck')
+        (TRUCK, 'Truck'),
     ]
 
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
@@ -29,4 +31,7 @@ class CarModel(models.Model):
     year = models.DateField()
 
     def __str__(self):
-        return f"{self.name} ({self.car_type}, {self.year.year}) from {self.car_make.name}"
+        return (
+            f"{self.name} ({self.car_type}, {self.year.year}) "
+            f"from {self.car_make.name}"
+        )
